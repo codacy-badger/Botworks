@@ -1,0 +1,112 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+}
+
+.botui-message {
+  margin-top: 10px !important;
+}
+
+.botui-message-content {
+  background: white !important;
+  color: #666 !important;
+  border-radius: 0px !important;
+  font-size: 1em;
+  line-height: 1.6em !important;
+  padding: 1em 1.5em !important;
+  border: 1px solid #666;
+  max-width: 600px !important;
+  word-wrap: break-word !important;
+}
+
+.botui-message-content.loading {
+  background: none !important;
+  border: none;
+}
+
+.botui-actions-container {
+  position: absolute !important;
+  bottom: 0px !important;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
+
+.botui-message-content.human {
+  background: #ddd !important;
+  color: black !important;
+  border: none !important;
+  margin-bottom: 15px;
+}
+
+button.botui-actions-buttons-button {
+  margin-right: 10px !important;
+margin-bottom: 10px !important;
+}
+
+.botui-actions-buttons-button+.botui-actions-buttons-button {
+    margin-left: 0px !important;
+}
+
+.botui-actions-buttons-button {
+  background: #ddd !important;
+  color: black !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1em 1.5em !important;
+}
+
+.dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: .5rem;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.2) !important;
+}
+
+.dot:nth-last-child(1) {
+    margin-left: .3rem;
+    animation: loader .6s .3s linear infinite !important;
+}
+
+.dot:nth-last-child(2) {
+    margin-left: .3rem;
+    animation: loader .6s .2s linear infinite !important;
+}
+
+.dot:nth-last-child(3) {
+    animation: loader .6s .1s linear infinite !important;
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(30px);
+  opacity: 0;
+}
+
+@keyframes loader {
+    0 {
+        transform: translate(0, 0);
+
+    }
+    25% {
+        transform: translate(0, -3px)
+    }
+    50% {
+        transform: translate(0, 0);
+
+    }
+    75% {
+        transform: translate(0, 3px)
+    }
+    100% {
+        transform: translate(0, 0)
+    }
+}

@@ -1,141 +1,22 @@
-
 <!DOCTYPE html>
-<html lang="en-AU">
+<html>
+
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1, minimum-scale=1, user-scalable = no">
-    <title>Embryo.bot</title>
-    <link rel="stylesheet" href="css/foundation.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/chat.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-
+  <meta charset="utf-8">
+  <title>BotUI - Hello World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="styles/bot.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css" />
 </head>
+
 <body>
-
-<div class="talk"></div> <!-- chat interface to be written to this div -->
-
-
-<script>
-
-    //script for the chat "bot"
-var c = [
-{"path":"start","messages":[
-    {"author":"bot","text":"Hi, I'm an embryo that loves to chat!"},
-    {"author":"empty","text":"What's your name?"}
-],
-  "choices":[
-    {"path":"2","text":"What's your name?","write":true},
-  ]
-},{"path":"2","messages":[
-
-  ],
-    "choices":[
-
-    ]
-},{"path":"boy","messages":[
-{"author":"bot","text":"Great! I'd love a boy friend."},
-{"author":"empty","text":"I'm not a boy or a girl, because my reproductive organs haven't yet developed."},
-{"author":"empty","text":"The reproductive tissue that I *do* have looks nothing like yours."},
-{"author":"empty","text":"Let me know when you're ready to examine this embryonic tissue"},
-    ],
-        "choices":[
-{"path":"examine","text":"I'm ready, let's take a look","write":false},
-        ]
-},{"path":"girl","messages":[
-  {"author":"bot","text":"Great! I'd love a girl friend."},
-  {"author":"empty","text":"I'm not a boy or a girl, because my reproductive organs haven't yet developed."},
-  {"author":"empty","text":"The reproductive tissue that I *do* have looks nothing like yours."},
-  {"author":"empty","text":"Let me know when you're ready to examine this embryonic tissue"},
-      ],
-          "choices":[
-  {"path":"examine","text":"I'm ready, let's take a look","write":false},
-        ]
-},{"path":"examine","messages":[
-  {"author":"bot","text":"This is what my reproductive system looks like:"},
-  {"author":"empty","text":"<img src=\"http://via.placeholder.com/350x350\">"},
-  {"author":"empty","text":"I don't have a genitalia like you. Instead, my external opening is called a cloaca."},
-  {"author":"empty","text":"Attached to my cloaca are several important ducts and organs"},
-  {"author":"empty","text":"Click or tap around on each structure and I'll tell you more about what they do"},
-  {"author":"empty","text":"When you're done, you can decide which sex I become:"},
-      ],
-          "choices":[
-  {"path":"maleDev","text":"♂","write":false},
-  {"path":"femaleDev","text":"♀","write":false},
-        ]
-},{"path":"maleDev","messages":[
-
-      ],
-          "choices":[
-
-        ]
-},{"path":"maleDone","messages":[
-    {"author":"bot","text":"Congratulations! At 10-weeks of age, I'm officially a male embryo! \u{1F389}"},
-    {"author":"empty","text":"If you want to learn how to make me a female, let me know."},
-      ],
-          "choices":[
-            {"path":"femaleDev","text":"♀","write":false},
-        ]
-},{"path":"femaleDev","messages":[
-
-      ],
-          "choices":[
-
-        ]
-},{"path":"femaleDone","messages":[
-    {"author":"bot","text":"Congratulations! At 10-weeks of age, I'm officially a female embryo! \u{1F389}"},
-    {"author":"empty","text":"If you want to learn how to make me a male, let me know."},
-      ],
-          "choices":[
-            {"path":"maleDev","text":"♂","write":false},
-        ]
-},{"path":"afterClick","messages":[
-{"author":"bot","text":"An activated SRY makes a protein called <strong>TDF</strong> or Testis-Determining Factor"},
-{"author":"empty","text":"TDF causes my embryonic gonads to start to differentiate into testes."},
-{"author":"empty","text":"My testes then make 3 hormones: Testosterone, DHT and AMH."},
-{"author":"empty","text":"Click or tap on each hormone to learn its function:"},
-{"author":"empty","text":"<img src=\"http://via.placeholder.com/350x350\">"},
-      ],
-          "choices":[
-            {"path":"maleDone","text":"I'm done, what's next?","write":false},
-        ]
-}
-
-
-] //END chat script
-
-
-//array of authors START
-var a = [
-          {"id": "bot", "name": "EMBRYO", "src": "img/embryo.svg"},
-          {"id": "empty", "name": "", "src": "/"},
-        ];
-//END authors array
-
-
-//End script for chat
- </script>
-
-
-<!-- base scripts (jquery, foundation, etc) -->
-<script src="js/jquery.js" ></script>
-<script src="js/modernizr.js" ></script>
-<script src="js/foundation.min.js" ></script>
-
-
-<!-- other scripts -->
-<script src="js/foundation.tooltip.js" ></script>
-<script src="js/dist.js" ></script>
-<script src="js/chat-bubble.js" ></script>
-<script src="js/chat.js" ></script>
-
-
-
-
-
-
+  <div class="botui-app-container" id="embryo" style="min-width: 800px; height: 100%;">
+    <bot-ui></bot-ui>
+  </div>
+  <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+  <script src="scripts/botui.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
+
 </html>
