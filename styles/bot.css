@@ -1,26 +1,44 @@
 body {
   font-family: 'Helvetica', sans-serif;
+  background: #fafafa;
+}
+
+.botui-app-container {
+  width: 100% !important;
+  max-width: 900px;
+  height: 100% !important;
 }
 
 .botui-message {
   margin-top: 10px !important;
 }
 
+.botui-container {
+  background: none !important;
+}
+
 .botui-message-content {
-  background: white !important;
-  color: #666 !important;
-  border-radius: 0px !important;
-  font-size: 1em;
-  line-height: 1.6em !important;
-  padding: 1em 1.5em !important;
-  border: 1px solid #666;
-  max-width: 600px !important;
-  word-wrap: break-word !important;
+box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+color: black !important;
+background: #fff !important;
+border-radius: 4px !important;
+transition: all 0.85s cubic-bezier(0.68, 0.01, 0.245, 1.13) 0.35s,color 0.3s ease-in-out 0.25s,min-width 0.35s ease-in-out,min-height 0.35s ease-in-out;
+line-height: 1.45em;
+padding: 12px 14px !important;
+border: none;
+font-size: 16px;
+margin-left: 3.5em;
+}
+
+.botui-message-content.text{
+  line-height: 1.8em !important;
+  font-family: 'Roboto Slab', serif;
 }
 
 .botui-message-content.loading {
   background: none !important;
-  border: none;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .botui-actions-container {
@@ -31,16 +49,42 @@ body {
   text-align: center;
 }
 
+.author {
+  border-radius: 25px;
+margin-bottom: -19px;
+margin-right: -50px;
+transition: all ease-in-out 0.2s;
+transform: scale(0.5);
+opacity: 0;
+}
+
+.showAuthor {
+  transform: scale(0.8);
+  opacity: 1;
+}
+
+.authorName {
+  position: relative;
+    top: -2px;
+    display: block;
+    left: 65px;
+    font-family: 'Roboto Slab';
+    color: #ccc;
+    padding-top: 15px;
+}
+
 .botui-message-content.human {
-  background: #ddd !important;
-  color: black !important;
-  border: none !important;
-  margin-bottom: 15px;
+  background: #EE88B9 !important;
+  color: #FFF !important;
+  margin-bottom: 25px;
+  line-height: 1.3 !important;
 }
 
 button.botui-actions-buttons-button {
   margin-right: 10px !important;
 margin-bottom: 10px !important;
+  font-family: 'Roboto Slab', serif;
+
 }
 
 .botui-actions-buttons-button+.botui-actions-buttons-button {
@@ -48,11 +92,11 @@ margin-bottom: 10px !important;
 }
 
 .botui-actions-buttons-button {
-  background: #ddd !important;
-  color: black !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  padding: 1em 1.5em !important;
+color: #FFF !important;
+padding: 12px 14px !important;
+background: #EE88B9 !important;
+font-size: 16px !important;
+
 }
 
 .dot {
