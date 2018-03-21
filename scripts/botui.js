@@ -198,7 +198,7 @@
       if(!_msg.loading && !_msg.content) {
         throw Error('BotUI: "content" is required in a non-loading message object.');
       }
-      console.log(_msg.imgSrc);
+      console.log(_msg);
       _msg.type = _msg.type || 'text';
       _msg.visible = (_msg.delay || _msg.loading) ? false : true;
       var _index = _instance.messages.push(_msg) - 1;

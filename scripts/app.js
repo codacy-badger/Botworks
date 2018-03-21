@@ -1,6 +1,8 @@
 var userName, userAge;
 var botui = new BotUI('embryo');
 
+//add in custom message types - card results or something, then load the content in via a method
+
 botui.message.add({
   delay: 3000,
   authorImg: true,
