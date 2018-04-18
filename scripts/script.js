@@ -1,4 +1,3 @@
-
 var c = {
   "paths": {
     "default": {
@@ -69,10 +68,9 @@ var c = {
         },
         {
           "choices": [{
-              "text": 'Got it, let\'s go!',
-              "value": 'play'
-            }
-          ],
+            "text": 'Got it, let\'s go!',
+            "value": 'play'
+          }],
           "bot": false
         },
       ]
@@ -304,14 +302,14 @@ var c = {
           "bot": true
         },
         {
-            "text": "Oh. I see what you're doing.",
-            "authorImg": false,
-            "bot": true
+          "text": "Oh. I see what you're doing.",
+          "authorImg": false,
+          "bot": true
         },
         {
-            "text": "In 2006, Pluto was reclassified to a 'dwarf planet', making it not a 'real' planet..",
-            "authorImg": false,
-            "bot": true
+          "text": "In 2006, Pluto was reclassified to a 'dwarf planet', making it not a 'real' planet..",
+          "authorImg": false,
+          "bot": true
         },
 
         {
@@ -511,11 +509,10 @@ var c = {
     },
     "exit": {
       "messages": [{
-          "text": "That was fun! I can't wait to play again!",
-          "authorImg": true,
-          "bot": true
-        },
-      ]
+        "text": "That was fun! I can't wait to play again!",
+        "authorImg": true,
+        "bot": true
+      }, ]
     },
   }
 }

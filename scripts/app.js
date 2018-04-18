@@ -1,23 +1,11 @@
 var currentPath = "default";
 var botui = new BotUI('bot');
-console.log(this);
-console.log(c);
+
 function say(x, index) {
-  console.log(document.body);
-  console.log(currentPath);
-  console.log(x.paths[currentPath]);
   if (x.paths[currentPath] != undefined) {
     if (index <= x.paths[currentPath].messages.length - 1) {
-      console.log(x);
-      console.log(index);
-      console.log(x.paths);
-      console.log(currentPath);
-      console.log(x.paths[currentPath].messages[index])
-
       var message = x.paths[currentPath].messages[index];
-
       if (message.bot == true) {
-
         botui.message.add({
           delay: 3000,
           authorImg: message.authorImg,
@@ -25,10 +13,8 @@ function say(x, index) {
           loading: true,
           content: message.text
         })
-
         setTimeout(function() {
           index++;
-
           say(x, index);
         }, 3000);
       } else {
