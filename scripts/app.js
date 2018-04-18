@@ -1,102 +1,56 @@
-var userName, userAge;
-var botui = new BotUI('embryo');
+var currentPath = "default";
+var botui = new BotUI('bot');
 
-//add in custom message types - card results or something, then load the content in via a method
+console.log(c);
+function say(x, index) {
+  console.log(currentPath);
+  console.log(x.paths[currentPath]);
+  if (x.paths[currentPath] != undefined) {
+    if (index <= x.paths[currentPath].messages.length - 1) {
+      console.log(x);
+      console.log(index);
+      console.log(x.paths);
+      console.log(currentPath);
+      console.log(x.paths[currentPath].messages[index])
 
-botui.message.add({
-  delay: 3000,
-  authorImg: true,
-  imgSrc: "./img/testAv.jpg",
-  loading: true,
-  content: "Hi, I'm Mario bot. A virtual version of the real Mario you've seen in course videos. 😀"
-}).then(function() {
-  botui.message.add({
-    delay: 3000,
-    loading: true,
-    content: "With chatbot Mario, you get all the charm and wit of the video one, but none of the distracting hand movements. 🙌"
-  }).then(function() {
-    botui.action.button({
-      autoHide: false,
-      action: [{ // show only one button
-          text: 'Tell me more',
-          value: 'more'
-        },
-        { // show only one button
-          text: 'Leave me alone!',
-          value: 'exit'
-        }
-      ]
-    }).then(function(res) { // will be called when a button is clicked.
-      botui.action.hide();
-      console.log(res.value);
-      if (res.value == 'exit') {
+      var message = x.paths[currentPath].messages[index];
+
+      if (message.bot == true) {
         botui.message.add({
           delay: 3000,
-          authorImg: true,
+          authorImg: message.authorImg,
           imgSrc: "./img/testAv.jpg",
           loading: true,
-          content: "Okay, we'll chat some other time. Ciao!"
+          content: message.text
         })
+        setTimeout(function() {
+          index++;
+          console.log(index);
+          console.log(currentPath);
+          say(x, index);
+        }, 3000);
       } else {
-        botui.message.add({
-          delay: 3000,
-          loading: true,
-          authorImg: true,
-          imgSrc: "./img/testAv.jpg",
-          content: "My job is to test your understanding of course content and clarify any concepts that you might be struggling with. In this discussion, I want to find out how much you know about the male reproductive system. Are you ready to get started?"
-        }).then(function() {
-          botui.action.button({
-            action: [{ // show only one button
-                text: 'Let\'s go!',
-                value: 'start'
-              },
-              { // show only one button
-                text: 'I\'m not ready',
-                value: 'exit'
-              }
-            ]
-          }).then(function(res) { // will be called when a button is clicked.
-            if (res.value == 'exit') {
-              botui.message.add({
-                delay: 3000,
-                authorImg: true,
-                imgSrc: "./img/testAv.jpg",
-                loading: true,
-                content: "Okay, we'll chat some other time. Ciao!"
-              })
-            } else {
-
-              botui.message.add({
-                delay: 3000,
-                loading: true,
-                authorImg: true,
-                imgSrc: "./img/testAv.jpg",
-                content: "Okay, let's start simple. Where precisely are sperm made?"
-              }).then(function() {
-                botui.action.button({
-                  action: [{ // show only one button
-                      text: 'The testes. Or testicles - wait, are they the same thing?',
-                      value: 'testes'
-                    },
-                    { // show only one button
-                      text: 'The seminiferous tubles, inside the testes',
-                      value: 'seminiferious'
-                    },
-                    {
-                      text: 'The epididymis, located in the scrotum',
-                      value: 'epididymis'
-                    }
-                  ]
-                }).then(function(res) { // will be called when a button is clicked.
-
-                })
-
-              })
-            }
-          })
+        botui.action.button({
+          autoHide: false,
+          action: message.choices
+        }).then(function(res) { // will be called when a button is clicked.
+          botui.action.hide();
+          console.log(res.value)
+          index = 0;
+          currentPath = res.value;
+          say(x, index);
         })
-
       }
+    }
+  } else {
+    botui.message.add({
+      delay: 3000,
+      authorImg: true,
+      imgSrc: "./img/testAv.jpg",
+      loading: true,
+      content: "There's been a problem - you shouldn't be seeing this message. Let us know if you're seeing this, it may mean the path you have defined for this action doesn't exist."
     })
-  })
-})
+  }
+}
+
+say(c, 0);

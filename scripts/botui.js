@@ -95,9 +95,7 @@
           content: text
         });
       }
-      console.log( _instance.action.show);
        _instance.action.show = !_instance.action.autoHide;
-       console.log( _instance.action.show);
     }
 
     var _botuiComponent = {
@@ -132,7 +130,6 @@
           }, 3000)
         },
     		handle_action_button: function (button) {
-          console.log(button);
           _handleAction(button.text);
           var defaultActionObj = {
             type: 'button',
@@ -198,7 +195,6 @@
       if(!_msg.loading && !_msg.content) {
         throw Error('BotUI: "content" is required in a non-loading message object.');
       }
-      console.log(_msg);
       _msg.type = _msg.type || 'text';
       _msg.visible = (_msg.delay || _msg.loading) ? false : true;
       var _index = _instance.messages.push(_msg) - 1;

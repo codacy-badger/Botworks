@@ -98,6 +98,20 @@ button.botui-actions-buttons-button {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
 }
 
+.botui-actions-text-input {
+  color: #FFF !important;
+  padding: 12px 14px !important;
+  background: #7957d5 !important;
+  font-size: 16px !important;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.botui-actions-text-input::placeholder {
+  color: rgba(0,0,0,0.3);
+  text-align: center;
+}
+
 .dot {
   width: .5rem;
   height: .5rem;
