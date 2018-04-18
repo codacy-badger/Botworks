@@ -6,7 +6,6 @@
  * Copyright 2017, Moin Uddin
  * Released under the MIT license.
 */
-
 (function (root, factory) {
   "use strict";
   if (typeof define === 'function' && define.amd) {
@@ -209,8 +208,12 @@
             }
           }
           resolve(_index);
+            //_instance.$el.children["0"].children[_index].scrollIntoView({ behavior: 'smooth' });
+            document.querySelector(".botui-container").scroll({top: 2500, behavior: 'smooth' });
+
         }, _msg.delay || 0);
       });
+
     }
 
     function _checkOpts(_opts) {

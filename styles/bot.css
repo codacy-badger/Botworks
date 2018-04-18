@@ -1,6 +1,9 @@
 body {
   font-family: 'Helvetica', sans-serif;
   background: #fafafa;
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 .botui-app-container {
@@ -13,8 +16,15 @@ body {
   margin-top: 10px !important;
 }
 
+.botui-messages-container {
+  padding-top: 50px;
+  margin-bottom: 70px;
+}
+
 .botui-container {
   background: none !important;
+  height: 100vh !important;
+  scroll-behavior: smooth;
 }
 
 .botui-message-content {
@@ -42,8 +52,8 @@ body {
 }
 
 .botui-actions-container {
-  position: absolute !important;
-  bottom: 0px !important;
+  position: fixed !important;
+  bottom: 0 !important;
   width: 100%;
   left: 0;
   text-align: center;
@@ -140,10 +150,13 @@ button.botui-actions-buttons-button {
 
 .slide-fade-enter-active {
   transition: all .3s ease;
+
 }
 
 .slide-fade-leave-active {
   transition: all .3s;
+  transform: translateX(-30px);
+  opacity: 0;
 }
 
 .slide-fade-enter, .slide-fade-leave-to
