@@ -150,7 +150,6 @@ button.botui-actions-buttons-button {
 
 .slide-fade-enter-active {
   transition: all .3s ease;
-
 }
 
 .slide-fade-leave-active {
@@ -163,7 +162,7 @@ button.botui-actions-buttons-button {
 /* .slide-fade-leave-active below version 2.1.8 */
 
   {
-  transform: translateX(30px);
+  transform: translateX(60px);
   opacity: 0;
 }
 

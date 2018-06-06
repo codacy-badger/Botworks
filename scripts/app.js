@@ -2,7 +2,7 @@ var currentPath = "default";
 var botui = new BotUI('bot');
 
 function say(x, index) {
-  if (x.paths[currentPath] != undefined) {
+  if (x.paths[currentPath] != undefined) { //if the chosen path exists, do this...
     if (index <= x.paths[currentPath].messages.length - 1) {
       var message = x.paths[currentPath].messages[index];
       if (message.bot == true) {
@@ -17,9 +17,9 @@ function say(x, index) {
           index++;
           say(x, index);
         }, 3000);
-      } else {
+      } else { //TODO: add handlers for text entry as well as buttons
         botui.action.button({
-          autoHide: false,
+          
           action: message.choices
         }).then(function(res) { // will be called when a button is clicked.
           botui.action.hide();
@@ -30,7 +30,8 @@ function say(x, index) {
         })
       }
     }
-  } else {
+  } else { //...else if the path doesn't exist, display an error
+    console.error("The chosen path has not been defined in script.js - check your JSON structure")
     botui.message.add({
       delay: 3000,
       authorImg: true,
