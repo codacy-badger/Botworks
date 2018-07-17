@@ -3,15 +3,15 @@ var botui = new BotUI('bot');
 
 //construction of say() method
 function say(x, index) {
-  if (x.paths[currentPath] != undefined) { //if the chosen path exists, do this...
+  if (x.paths[currentPath] != undefined) { //if the chosen path exists, do this... see:[0]
     if (index <= x.paths[currentPath].messages.length - 1) {
       var message = x.paths[currentPath].messages[index];
       if (message.bot == true) {
         var typingTime = message.text.length * 15;
-        typingTime *= Math.random() * 1.5 + 0.5;
+        typingTime *= Math.random() * 1.5 + 0.5; //is this the best way?
         botui.message.add({
           delay: typingTime, //calculated by length of the message +/- some random amount, to simulate "real" typing times for immersion
-          authorImg: message.authorImg,
+          authorImg: message.authorImg, //replace this with more efficient test - see if the previous author is the same - if so, this = false
           imgSrc: "./img/testAv.jpg",
           loading: true,
           content: message.text
@@ -32,7 +32,7 @@ function say(x, index) {
         })
       }
     }
-  } else { //...else if the path doesn't exist, display an error
+  } else { //[0] ...else if the path doesn't exist, display an error
     console.error("The chosen path has not been defined in script.js - check your JSON structure")
     botui.message.add({
       delay: 3000,
@@ -44,8 +44,5 @@ function say(x, index) {
   }
 }
 //END say()
-
-
-
 
 say(c, 0); //say() method, calling stored JSON var
