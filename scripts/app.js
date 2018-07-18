@@ -5,6 +5,8 @@ var prevAuthor, currentAuthor; //used for testing if author changes (human to bo
 var defaultImage = "./img/testAv.jpg"; //default author image, can override in Say();
 var defaultAuthor = "bot.works";
 var cssMessage = '';
+//END defaults/libraries
+
 
 //construction of say() method
 function say(x, index) {
@@ -13,31 +15,25 @@ function say(x, index) {
       var message = x.paths[currentPath].messages[index];
 
       if (message.bot == true) {
-        console.log(x.paths[currentPath].messages);
-        //if middle message
-
-
         //if next message is text
-        if (x.paths[currentPath].messages[index + 1].text != undefined) {
+      if (x.paths[currentPath].messages[index+1] != undefined){
+        if (x.paths[currentPath].messages[index+1].text != undefined) {
           cssMessage = 'firstMessage';
         }
         //if next message is choice
-        else if (x.paths[currentPath].messages[index + 1].text == undefined) {
+        else if (x.paths[currentPath].messages[index + 1].text != undefined) {
           cssMessage = 'lastMessage';
         } 
-        
+      }
         if (x.paths[currentPath].messages[index - 1] != undefined) {
           console.log(x.paths[currentPath].messages[index - 1]);
           if (x.paths[currentPath].messages[index + 1].text != undefined && x.paths[currentPath].messages[index - 1].text != undefined) {
             cssMessage = 'middleMessage';
           }
         }
-
-        if (x.paths[currentPath].messages[index + 1].text == undefined && x.paths[currentPath].messages[index - 1] == undefined) {
+        if (x.paths[currentPath].messages[index + 1] == undefined || x.paths[currentPath].messages[index + 1].text == undefined && x.paths[currentPath].messages[index - 1] == undefined) {
           cssMessage = '';
         }
-
-
         currentAuthor = "bot";
         console.log("previousAuthor: " + prevAuthor + ", current: " + currentAuthor);
         var typingTime = message.text.length * 15;
@@ -62,7 +58,6 @@ function say(x, index) {
           action: message.choices
         }).then(function (res) { // will be called when a button is clicked.
           botui.action.hide();
-          console.log(res.value)
           index = 0;
           currentPath = res.value;
           prevAuthor = currentAuthor;
@@ -82,5 +77,7 @@ function say(x, index) {
   }
 }
 //END say()
+
+
 
 say(c, 0); //say() method, calling stored JSON var

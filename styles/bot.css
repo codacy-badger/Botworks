@@ -8,7 +8,6 @@ body {
 
 .botui-app-container {
   width: 100% !important;
-  max-width: 900px;
   height: 100% !important;
 }
 
@@ -19,6 +18,8 @@ body {
 .botui-messages-container {
   padding-top: 50px;
   margin-bottom: 70px;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .botui-container {
@@ -51,7 +52,7 @@ body {
 .middleMessage > .botui-message-content {
   border-radius: 4px 20px 20px 4px !important;
   margin-top: -5px;
-  margin-bottom: -5px;
+  margin-bottom: 0px;
  }
 
 .botui-message-content.text {
