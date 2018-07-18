@@ -23,26 +23,40 @@ body {
 
 .botui-container {
   background: none !important;
-  height: 100vh !important;
+  height: 90vh !important;
   scroll-behavior: smooth;
 }
 
 .botui-message-content {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
-  color: black !important;
+  /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2); */
+  color:#2C2B59;
   background: #fff !important;
-  border-radius: 4px !important;
+  border-radius: 20px;
   transition: all 0.85s cubic-bezier(0.68, 0.01, 0.245, 1.13) 0.35s, color 0.3s ease-in-out 0.25s, min-width 0.35s ease-in-out, min-height 0.35s ease-in-out;
-  line-height: 1.45em;
+  line-height: 1.7em;
   padding: 12px 14px !important;
   border: none;
-  font-size: 16px;
-  margin-left: 3.5em;
+  font-size: 13px;
+  margin-left: 4.5em;
 }
+
+.firstMessage > .botui-message-content {
+  border-radius: 20px 20px 20px 4px !important;
+ }
+
+.lastMessage > .botui-message-content {
+ border-radius: 4px 20px 20px 20px !important;
+}
+
+.middleMessage > .botui-message-content {
+  border-radius: 4px 20px 20px 4px !important;
+  margin-top: -5px;
+  margin-bottom: -5px;
+ }
 
 .botui-message-content.text {
   line-height: 1.8em !important;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .botui-message-content.loading {
@@ -78,22 +92,24 @@ body {
   top: -2px;
   display: block;
   left: 65px;
-  font-family: 'Roboto Slab';
+  font-family: 'Poppins';
   color: #ccc;
   padding-top: 15px;
+  font-size: 13px;
 }
 
 .botui-message-content.human {
-  background: #7957d5 !important;
-  color: #FFF !important;
+  background: #1DE9B6 !important;
+  color: #2C2B59 !important;
   margin-bottom: 25px;
   line-height: 1.3 !important;
+  border-radius: 20px 0 20px 20px !important;
 }
 
 button.botui-actions-buttons-button {
   margin-right: 10px !important;
   margin-bottom: 10px !important;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Poppins', serif;
 }
 
 .botui-actions-buttons-button+.botui-actions-buttons-button {
@@ -101,20 +117,22 @@ button.botui-actions-buttons-button {
 }
 
 .botui-actions-buttons-button {
-  color: #FFF !important;
+  color: #2C2B59 !important;
   padding: 12px 14px !important;
-  background: #7957d5 !important;
-  font-size: 16px !important;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
+  background: #1DE9B6 !important;
+  font-size: 13px !important;
+  /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1) !important; */
+  box-shadow: none !important;
+  border-radius: 20px !important;
 }
 
 .botui-actions-text-input {
-  color: #FFF !important;
+  color: #2C2B59 !important;
   padding: 12px 14px !important;
-  background: #7957d5 !important;
-  font-size: 16px !important;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
-  border-radius: 4px !important;
+  background: #1DE9B6 !important;
+  font-size: 13px !important;
+  /* box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1) !important; */
+  border-radius: 20px !important;
 }
 
 .botui-actions-text-input::placeholder {

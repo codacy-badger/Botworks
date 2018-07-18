@@ -1,20 +1,49 @@
+//defaults and libraries
 var currentPath = "default";
 var botui = new BotUI('bot');
-var prevAuthor, currentAuthor;
+var prevAuthor, currentAuthor; //used for testing if author changes (human to bot, or bot to different bot)
 var defaultImage = "./img/testAv.jpg"; //default author image, can override in Say();
 var defaultAuthor = "bot.works";
+var cssMessage = '';
 
 //construction of say() method
 function say(x, index) {
   if (x.paths[currentPath] != undefined) { //if the chosen path exists, do this... see:[0]
     if (index <= x.paths[currentPath].messages.length - 1) {
       var message = x.paths[currentPath].messages[index];
+
       if (message.bot == true) {
+        console.log(x.paths[currentPath].messages);
+        //if middle message
+
+
+        //if next message is text
+        if (x.paths[currentPath].messages[index + 1].text != undefined) {
+          cssMessage = 'firstMessage';
+        }
+        //if next message is choice
+        else if (x.paths[currentPath].messages[index + 1].text == undefined) {
+          cssMessage = 'lastMessage';
+        } 
+        
+        if (x.paths[currentPath].messages[index - 1] != undefined) {
+          console.log(x.paths[currentPath].messages[index - 1]);
+          if (x.paths[currentPath].messages[index + 1].text != undefined && x.paths[currentPath].messages[index - 1].text != undefined) {
+            cssMessage = 'middleMessage';
+          }
+        }
+
+        if (x.paths[currentPath].messages[index + 1].text == undefined && x.paths[currentPath].messages[index - 1] == undefined) {
+          cssMessage = '';
+        }
+
+
         currentAuthor = "bot";
         console.log("previousAuthor: " + prevAuthor + ", current: " + currentAuthor);
         var typingTime = message.text.length * 15;
-        typingTime *= Math.random() * 1.5 + 0.5; //is this the best way?
+        typingTime *= Math.random() * 1.5 + 0.8;
         botui.message.add({
+          cssClass: cssMessage,
           delay: typingTime,
           authorImg: prevAuthor != currentAuthor, //if author is same as previous, false
           author: defaultAuthor,
@@ -22,7 +51,7 @@ function say(x, index) {
           loading: true,
           content: message.text //text from the JSON
         })
-        setTimeout(function() {
+        setTimeout(function () {
           index++;
           prevAuthor = currentAuthor;
           say(x, index);
@@ -31,7 +60,7 @@ function say(x, index) {
         currentAuthor = "human"
         botui.action.button({
           action: message.choices
-        }).then(function(res) { // will be called when a button is clicked.
+        }).then(function (res) { // will be called when a button is clicked.
           botui.action.hide();
           console.log(res.value)
           index = 0;
