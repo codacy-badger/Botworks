@@ -1,5 +1,8 @@
 var currentPath = "default";
 var botui = new BotUI('bot');
+var prevAuthor, currentAuthor;
+var defaultImage = "./img/testAv.jpg"; //default author image, can override in Say();
+var defaultAuthor = "bot.works";
 
 //construction of say() method
 function say(x, index) {
@@ -7,20 +10,25 @@ function say(x, index) {
     if (index <= x.paths[currentPath].messages.length - 1) {
       var message = x.paths[currentPath].messages[index];
       if (message.bot == true) {
+        currentAuthor = "bot";
+        console.log("previousAuthor: " + prevAuthor + ", current: " + currentAuthor);
         var typingTime = message.text.length * 15;
         typingTime *= Math.random() * 1.5 + 0.5; //is this the best way?
         botui.message.add({
-          delay: typingTime, //calculated by length of the message +/- some random amount, to simulate "real" typing times for immersion
-          authorImg: message.authorImg, //replace this with more efficient test - see if the previous author is the same - if so, this = false
-          imgSrc: "./img/testAv.jpg",
+          delay: typingTime,
+          authorImg: prevAuthor != currentAuthor, //if author is same as previous, false
+          author: defaultAuthor,
+          imgSrc: defaultImage,
           loading: true,
-          content: message.text
+          content: message.text //text from the JSON
         })
         setTimeout(function() {
           index++;
+          prevAuthor = currentAuthor;
           say(x, index);
         }, typingTime);
       } else { //TODO: add handlers for text entry as well as buttons
+        currentAuthor = "human"
         botui.action.button({
           action: message.choices
         }).then(function(res) { // will be called when a button is clicked.
@@ -28,6 +36,7 @@ function say(x, index) {
           console.log(res.value)
           index = 0;
           currentPath = res.value;
+          prevAuthor = currentAuthor;
           say(x, index);
         })
       }
