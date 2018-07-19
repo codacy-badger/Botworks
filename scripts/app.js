@@ -43,7 +43,7 @@ function say(x, index) {
           delay: typingTime,
           authorImg: prevAuthor != currentAuthor, //if author is same as previous, false
           author: defaultAuthor,
-          imgSrc: defaultImage,
+          imgSrc: defaultImage, 
           loading: true,
           content: message.text //text from the JSON
         })

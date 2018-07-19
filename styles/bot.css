@@ -24,7 +24,7 @@ body {
 
 .botui-container {
   background: none !important;
-  height: 90vh !important;
+  height: 100vh !important;
   scroll-behavior: smooth;
 }
 
