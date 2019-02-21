@@ -3,7 +3,6 @@
 
 ## Netlify
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ec0c4456-67a1-4a1e-9405-d37ef949ca8c/deploy-status)](https://app.netlify.com/sites/leo-bot/deploys)
-
 View on Netlify: https://leo-bot.netlify.com
 
 ## What is this?
